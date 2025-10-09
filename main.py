@@ -1,9 +1,28 @@
-import math_utils
+from math_utils import add, subtract, multiply, divide
 
-num1 = 8
-num2 = 4
+def get_number(prompt):
+    """Prompt user for a number with input validation."""
+    while True:
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print("❌ Invalid input! Please enter a number.")
 
-print("Addition:", math_utils.add(num1, num2))
-print("Subtraction:", math_utils.subtract(num1, num2))
-print("Multiplication:", math_utils.multiply(num1, num2))
-print("Division:", math_utils.divide(num1, num2))
+def main():
+    print("=== Simple Calculator ===")
+    
+    num1 = get_number("Enter first number: ")
+    num2 = get_number("Enter second number: ")
+
+    try:
+        print(f"Addition: {add(num1, num2)}")
+        print(f"Subtraction: {subtract(num1, num2)}")
+        print(f"Multiplication: {multiply(num1, num2)}")
+        print(f"Division: {divide(num1, num2)}")
+    except ZeroDivisionError:
+        print("⚠️  Error: Cannot divide by zero!")
+
+if __name__ == "__main__":
+    main()
+
